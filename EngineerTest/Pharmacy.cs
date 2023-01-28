@@ -22,7 +22,14 @@ public class Pharmacy : IPharmacy
                 {
                     if (_drugs[i].Name != "Magic Pill")
                     {
-                        _drugs[i].Benefit = _drugs[i].Benefit - 1;
+                        if (_drugs[i].Name == "Dafalgan" && _drugs[i].Benefit > 1)
+                        {
+                            _drugs[i].Benefit = _drugs[i].Benefit - 2;
+                        }
+                        else
+                        {
+                            _drugs[i].Benefit = _drugs[i].Benefit - 1;
+                        }
                     }
                 }
             }
@@ -67,7 +74,14 @@ public class Pharmacy : IPharmacy
                         {
                             if (_drugs[i].Name != "Magic Pill")
                             {
-                                _drugs[i].Benefit = _drugs[i].Benefit - 1;
+                                if (_drugs[i].Name == "Dafalgan" && _drugs[i].Benefit > 1)
+                                {
+                                    _drugs[i].Benefit = _drugs[i].Benefit - 2;
+                                }
+                                else
+                                {
+                                    _drugs[i].Benefit = _drugs[i].Benefit - 1;
+                                }
                             }
                         }
                     }
