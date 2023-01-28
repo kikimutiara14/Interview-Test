@@ -24,7 +24,7 @@
       {
         "Name": "Dafalgan",
         "ExpiresIn": 1,
-        "Benefit": 3
+        "Benefit": 22
       }
     ],
     [
@@ -51,7 +51,7 @@
       {
         "Name": "Dafalgan",
         "ExpiresIn": 0,
-        "Benefit": 1
+        "Benefit": 20
       }
     ],
     [
@@ -78,7 +78,7 @@
       {
         "Name": "Dafalgan",
         "ExpiresIn": -1,
-        "Benefit": 0
+        "Benefit": 16
       }
     ],
     [
@@ -105,7 +105,7 @@
       {
         "Name": "Dafalgan",
         "ExpiresIn": -2,
-        "Benefit": 0
+        "Benefit": 12
       }
     ],
     [
@@ -132,7 +132,7 @@
       {
         "Name": "Dafalgan",
         "ExpiresIn": -3,
-        "Benefit": 0
+        "Benefit": 8
       }
     ],
     [
@@ -159,7 +159,7 @@
       {
         "Name": "Dafalgan",
         "ExpiresIn": -4,
-        "Benefit": 0
+        "Benefit": 4
       }
     ],
     [

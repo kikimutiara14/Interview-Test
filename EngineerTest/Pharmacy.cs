@@ -11,94 +11,57 @@ public class Pharmacy : IPharmacy
 
     public IEnumerable<IDrug> UpdateBenefitValue()
     {
-        for (var i = 0; i < _drugs.Length; i++)
+        foreach (var drug in _drugs)
         {
-            if (
-                _drugs[i].Name != "Herbal Tea" &&
-                _drugs[i].Name != "Fervex"
-            )
+            if (drug.Name == "Magic Pill") continue;
+            if (drug.Name is "Herbal Tea" or "Fervex")
             {
-                if (_drugs[i].Benefit > 0)
-                {
-                    if (_drugs[i].Name != "Magic Pill")
-                    {
-                        if (_drugs[i].Name == "Dafalgan" && _drugs[i].Benefit > 1)
-                        {
-                            _drugs[i].Benefit = _drugs[i].Benefit - 2;
-                        }
-                        else
-                        {
-                            _drugs[i].Benefit = _drugs[i].Benefit - 1;
-                        }
-                    }
-                }
+                drug.Benefit++;
             }
             else
             {
-                if (_drugs[i].Benefit < 50)
+                if (drug.Name == "Dafalgan")
                 {
-                    _drugs[i].Benefit = _drugs[i].Benefit + 1;
-                    if (_drugs[i].Name == "Fervex")
-                    {
-                        if (_drugs[i].ExpiresIn < 11)
-                        {
-                            if (_drugs[i].Benefit < 50)
-                            {
-                                _drugs[i].Benefit = _drugs[i].Benefit + 1;
-                            }
-                        }
-
-                        if (_drugs[i].ExpiresIn < 6)
-                        {
-                            if (_drugs[i].Benefit < 50)
-                            {
-                                _drugs[i].Benefit = _drugs[i].Benefit + 1;
-                            }
-                        }
-                    }
+                    drug.Benefit--;
                 }
+                drug.Benefit--;
             }
 
-            if (_drugs[i].Name != "Magic Pill")
+            if (drug is { ExpiresIn: < 11, Name: "Fervex" })
             {
-                _drugs[i].ExpiresIn = _drugs[i].ExpiresIn - 1;
+                drug.Benefit++;
+            }
+                
+            if (drug is { ExpiresIn: < 6, Name: "Fervex" })
+            {
+                drug.Benefit++;
             }
 
-            if (_drugs[i].ExpiresIn < 0)
+            drug.ExpiresIn--;
+
+            if (drug.ExpiresIn < 0)
             {
-                if (_drugs[i].Name != "Herbal Tea")
+                if (drug.Name == "Herbal Tea")
                 {
-                    if (_drugs[i].Name != "Fervex")
-                    {
-                        if (_drugs[i].Benefit > 0)
-                        {
-                            if (_drugs[i].Name != "Magic Pill")
-                            {
-                                if (_drugs[i].Name == "Dafalgan" && _drugs[i].Benefit > 1)
-                                {
-                                    _drugs[i].Benefit = _drugs[i].Benefit - 2;
-                                }
-                                else
-                                {
-                                    _drugs[i].Benefit = _drugs[i].Benefit - 1;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        _drugs[i].Benefit =
-                            _drugs[i].Benefit - _drugs[i].Benefit;
-                    }
+                    drug.Benefit++;
+                }
+                else if (drug.Name == "Fervex")
+                {
+                    drug.Benefit = 0;
                 }
                 else
                 {
-                    if (_drugs[i].Benefit < 50)
+                    if (drug.Name == "Dafalgan")
                     {
-                        _drugs[i].Benefit = _drugs[i].Benefit + 1;
+                        drug.Benefit--;
                     }
+                    drug.Benefit--;
                 }
             }
+
+            // Set Benefit to it's outer bound if it goes out of it
+            if (drug.Benefit < 0) drug.Benefit = 0;
+            if (drug.Benefit > 50) drug.Benefit = 50;
         }
 
         return _drugs;

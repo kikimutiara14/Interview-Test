@@ -10,7 +10,7 @@ try
         new Drug("Herbal Tea", 10, 5),
         new Drug("Fervex", 12, 35),
         new Drug("Magic Pill", 15, 40),
-        new Drug("Dafalgan", 2, 5)
+        new Drug("Dafalgan", 2, 24)
     };
     IPharmacy pharmacy = new Pharmacy(drugs);
 
